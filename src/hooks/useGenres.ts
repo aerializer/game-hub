@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_GENRES } from "../constant";
-import apiClient from "../services/api-client";
 import genres from "../data/genres";
-import { FetchResponse } from "../services/api-client";
+import APIClient from "../services/api-client";
 
 export interface Genre {
   id: number;
@@ -13,9 +12,11 @@ export interface Genre {
 // const useGenres = () => useData<Genre>('/genres');
 // const useGenres = () => ({data: genres, isLoading: false, error: null})
 
+const apiClient = new APIClient<Genre>("/genres");
+
 const useGenres = () => useQuery({
     queryKey: CACHE_KEY_GENRES,
-    queryFn: () => apiClient.get<FetchResponse<Genre>>("/genres").then((res)=>res.data),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24h
     initialData: {count: genres.length, results: genres}
 })
