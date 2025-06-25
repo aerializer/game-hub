@@ -3,10 +3,7 @@ import ms from "ms";
 import { CACHE_KEY_PLATFORMS } from "../constant";
 import platforms from "../data/platforms";
 import APIClient from "../services/api-client";
-import { Platform } from "../entitites/Platform";
-
-// const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
-// const usePlatforms = () => ({data: platforms, isLoading: false, error: null})
+import Platform from "../entitites/Platform";
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
 
