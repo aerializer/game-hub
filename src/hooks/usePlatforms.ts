@@ -3,12 +3,7 @@ import ms from "ms";
 import { CACHE_KEY_PLATFORMS } from "../constant";
 import platforms from "../data/platforms";
 import APIClient from "../services/api-client";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "../entitites/Platform";
 
 // const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
 // const usePlatforms = () => ({data: platforms, isLoading: false, error: null})
